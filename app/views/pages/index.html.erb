@@ -1,5 +1,6 @@
 <% if current_user.present? %>
-	<h2>Welcome <%= current_user.name %></h2>
+	<h2>Welcome!</h2>
+	<p><%= link_to "Submit a link", new_link_path %></p>
 	<p><%= link_to "Sign out", destroy_user_session_path, method: :delete %></p>
 <% else %>
 	<h1>Reddit on Rails!</h1>
