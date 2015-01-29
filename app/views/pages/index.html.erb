@@ -1,0 +1,8 @@
+<% if current_user.present? %>
+	<h2>Welcome <%= current_user.name %></h2>
+	<p><%= link_to "Sign out", destroy_user_session_path, method: :delete %></p>
+<% else %>
+	<h1>Reddit on Rails!</h1>
+	<p><%= link_to "Sign up now!", new_user_registration_path %></p>
+	<p><%= link_to "Sign in", new_user_session_path %></p>
+<% end %>
