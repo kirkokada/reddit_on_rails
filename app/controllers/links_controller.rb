@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, only: [:new, :create, :destroy]
 
 	def new
 		@link = current_user.links.build
@@ -9,10 +9,14 @@ class LinksController < ApplicationController
   	@link = current_user.links.build(link_params)
   	if @link.save
   		flash[:success] = "Link submitted!"
-  		redirect_to root_url
+  		redirect_to @link
   	else
   		render 'new'
   	end
+  end
+
+  def show
+    @link = Link.find(params[:id])
   end
 
   def destroy

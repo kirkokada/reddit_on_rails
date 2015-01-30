@@ -1,0 +1,6 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h2><%= link_to @link.title, @link.url %></h2>
+		<h3>Submitted by <%= @link.user.name || "anonymous" %> <%= time_ago_in_words(@link.created_at) %> ago</h3>
+	</div>
+</div>
