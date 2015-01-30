@@ -1,0 +1,39 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* forms */
+
+.checkbox {
+	margin-left: 20px;
+}
+
+/* typography */
+
+h1, h2 {
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+}
+
+/* elements */
+
+.jumbotron {
+	margin: 0 25px;
+	border-radius: 10px;
+}
+
+/* alerts */
+
+.alert {
+	ul {
+		li {
+			list-style: none
+		}
+	}
+}
+
+.alert-notice {
+	background-color: $state-success-bg
+}
