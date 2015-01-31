@@ -1,9 +1,11 @@
 <div class="row">
 		<% if current_user.present? %>
-			<div class="col-md-6 col-md-offset-3">
-				<h2>Welcome!</h2>
-				<p><%= link_to "Submit a link", new_link_path %></p>
-				<p><%= link_to "Sign out", destroy_user_session_path, method: :delete %></p>
+			<div class="col-md-9">
+				<h2>Your Links</h2>
+				<ul class="links">
+					<%= render @links %>
+				</ul>
+				<%= will_paginate @links %>
 			</div>
 		<% else %>
 			<div class="jumbotron center">
