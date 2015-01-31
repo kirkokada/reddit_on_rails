@@ -16,6 +16,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Use will-paginate for bootstrap
+gem 'will_paginate-bootstrap'
+
 # Use Devise for authentication
 gem 'devise'
 

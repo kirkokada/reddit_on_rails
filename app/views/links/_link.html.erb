@@ -1,0 +1,6 @@
+<li id="link-<%= link.id %>">
+	<span class="link-title"><%= link_to link.title, link.url %></span>
+	<span class="link-timestamp">Submitted <%= time_ago_in_words(link.created_at) %> 
+		ago by <%= link_to link.user.name || "anonymous", link.user %>
+	</span>
+</li>

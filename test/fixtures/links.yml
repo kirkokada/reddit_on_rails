@@ -1,1 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+google:
+  url: "http://google.com"
+  title: "A decent search engine"
+  user: michael
+
+<% 30.times do |n| %>
+link-<%= n %>:
+  url: <%= "http://#{n}.com" %>
+  title: <%= "Website Number #{n}" %>
+  user: michael
+<% end %>
