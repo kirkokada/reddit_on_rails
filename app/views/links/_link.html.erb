@@ -3,4 +3,10 @@
 	<span class="link-timestamp">Submitted <%= time_ago_in_words(link.created_at) %> 
 		ago by <%= link_to link.user.name || "anonymous", link.user %>
 	</span>
+	<span class="link-actions">
+		<%= link_to "comment", link_path(link) %> 
+		<% if link.user == current_user %>
+			<%= link_to "delete", link_path(link), method: :delete %>
+		<% end %>
+	</span>
 </li>

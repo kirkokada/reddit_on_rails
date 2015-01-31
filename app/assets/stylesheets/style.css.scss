@@ -55,7 +55,8 @@ a {
 	font-size: 1.5em;
 }
 
-.link-timestamp {
+.link-timestamp .link-actions{
+	display: block;
 	color: $gray-light;
 	font-style: italic;
 	font-size: 0.75em;

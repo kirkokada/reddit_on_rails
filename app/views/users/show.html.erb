@@ -1,5 +1,6 @@
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-8 col-md-offset-2">
+		<h1>Overview for <%= @user.name || "anonymous" %></h1>
 		<h2>Submitted Links</h2>
 		<ul class="links">
 			<%= render @links %>
