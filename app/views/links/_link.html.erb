@@ -1,12 +1,19 @@
-<li id="link-<%= link.id %>">
-	<span class="link-title"><%= link_to link.title, link.url %></span>
-	<span class="link-timestamp">Submitted <%= time_ago_in_words(link.created_at) %> 
-		ago by <%= link_to link.user.name || "anonymous", link.user %>
-	</span>
-	<span class="link-actions">
-		<%= link_to "comment", link_path(link) %> 
-		<% if link.user == current_user %>
-			<%= link_to "delete", link_path(link), method: :delete %>
-		<% end %>
+<li id="link-<%= link.id %>" class="row">
+	<% if current_user.present? %>
+		<div id="vote_form-<%= link.id %>" class="vote-form col-md-1">
+			<%= render 'links/vote_form', link: link %>
+		</div>
+	<% end %>
+	<div class="link-info col-md-11">
+		<span class="link-title"><%= link_to link.title, link.url %></span>
+		<span class="link-timestamp">Submitted <%= time_ago_in_words(link.created_at) %> 
+			ago by <%= link_to link.user.name || "anonymous", link.user %>
+		</span>
+		<span class="link-actions">
+			<%= link_to "comment", link_path(link) %> 
+			<% if link.user == current_user %>
+				<%= link_to "delete", link_path(link), method: :delete %>
+			<% end %>
+		</div>
 	</span>
 </li>

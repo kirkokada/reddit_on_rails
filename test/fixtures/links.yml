@@ -5,6 +5,11 @@ google:
   title: "A decent search engine"
   user: michael
 
+tbd:
+  url: "http://tbd.com"
+  title: "Donate now!"
+  user: gob
+
 <% 30.times do |n| %>
 link-<%= n %>:
   url: <%= "http://#{n}.com" %>

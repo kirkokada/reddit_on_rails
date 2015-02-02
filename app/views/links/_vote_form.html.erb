@@ -1,0 +1,14 @@
+<div id="vote_form-<%= link.id %>" class="vote-form col-md-1">
+	<% if current_user.voted?(link) %>
+		<% value = link.votes.find_by(user_id: current_user.id).value %>
+		<% if value == 1 %>
+			<%= render 'links/upvoted', link: link %>
+		<% elsif value == -1 %>
+			<%= render 'links/downvoted', link: link %>
+		<% else %>
+			<%= render 'links/unvoted', link: link %>
+		<% end %>
+	<% else %>
+		<%= render 'links/unvoted', link: link %>
+	<% end %>
+</div>

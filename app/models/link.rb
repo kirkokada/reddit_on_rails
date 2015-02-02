@@ -5,6 +5,11 @@ class Link < ActiveRecord::Base
 	before_validation :append_http
 
 	belongs_to :user
+	has_many   :votes
+
+	def score
+		votes.sum(:value)
+	end
 
 	private
 		# Appends 'http://' to the url if not present
