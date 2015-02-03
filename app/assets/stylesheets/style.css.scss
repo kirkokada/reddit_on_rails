@@ -7,6 +7,10 @@
 	margin-left: 20px;
 }
 
+.btn {
+	margin-top: 5px;
+}
+
 /* typography */
 
 h1, h2 {
@@ -41,7 +45,7 @@ a {
 /* Links */
 
 .links {
-	list-style: none;
+
 }
 
 .link-info {
@@ -61,6 +65,11 @@ a {
 	color: $gray-light;
 	font-style: italic;
 	font-size: 0.8em;
+}
+
+.link-description {
+	border: 2px solid $gray-lighter;
+	border-radius: 5px;
 }
 
 /* Voting */

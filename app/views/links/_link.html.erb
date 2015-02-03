@@ -1,4 +1,4 @@
-<li id="link-<%= link.id %>" class="row">
+<div id="link-<%= link.id %>">
 	<% if current_user.present? %>
 		<div id="vote_form-<%= link.id %>" class="vote-form col-md-1">
 			<%= render 'links/vote_form', link: link %>
@@ -12,8 +12,8 @@
 		<span class="link-actions">
 			<%= link_to "comment", link_path(link) %> 
 			<% if link.user == current_user %>
-				<%= link_to "delete", link_path(link), method: :delete %>
+				<%= link_to "delete", link_path(link), method: :delete, remote: true %>
 			<% end %>
 		</div>
 	</span>
-</li>
+</div>

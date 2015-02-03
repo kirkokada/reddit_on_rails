@@ -20,10 +20,23 @@ class LinksController < ApplicationController
   end
 
   def destroy
+    @link = Link.find(params[:id])
+    if current_user == @link.user
+      @link.destroy
+      respond_to do |format|
+        format.html do 
+          flash.now[:success] = "Link deleted."
+          redirect_to root_url
+        end
+        format.js
+      end
+    else
+      redirect_to root_url
+    end
   end
 
   private
   def link_params
-  	params.require(:link).permit(:title, :url)
+  	params.require(:link).permit(:title, :url, :description)
   end
 end

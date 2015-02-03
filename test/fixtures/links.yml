@@ -4,11 +4,13 @@ google:
   url: "http://google.com"
   title: "A decent search engine"
   user: michael
+  description: "I think this site has a lot of promise!"
 
 tbd:
   url: "http://tbd.com"
   title: "Donate now!"
   user: gob
+  description: "Like the guy in the $3000 suit is going to donate!"
 
 <% 30.times do |n| %>
 link-<%= n %>:

@@ -2,11 +2,24 @@
 		<% if current_user.present? %>
 			<div class="col-md-9">
 				<h2>Your Links</h2>
-				<ul class="links">
+				<div class="links">
 					<%= render @links %>
-				</ul>
+				</div>
 				<%= will_paginate @links %>
 			</div>
+			<aside class="col-md-3">
+				<h2><%= current_user.name || current_user.email %></h2>
+				<div class="stats row" id="user-stats">
+					<div class="col-md-6">
+						<p>Links:</p> 
+						<p><%= current_user.links.count.to_s %></p>
+					</div>
+					<div class="col-md-6">
+						<p>Comments:</p>
+					</div>
+				</div>
+				<%= link_to 'Submit a link', new_link_path, class: "btn btn-primary center" %>
+			</aside>
 		<% else %>
 			<div class="jumbotron center">
 				<h1>Reddit on Rails!</h1>

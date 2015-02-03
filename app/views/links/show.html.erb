@@ -1,7 +1,12 @@
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
-		<ul class="links">
+	<div class="col-md-8">
+		<div class="links row">
 			<%= render @link %>
-		</ul>
+			<% if @link.description %>
+				<div class="link-description col-md-11 col-md-offset-1">
+					<%= @link.description %>
+				</div>
+			<% end %>
+		</div>
 	</div>
 </div>

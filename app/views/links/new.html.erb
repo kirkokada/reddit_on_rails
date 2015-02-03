@@ -5,10 +5,13 @@
 			<%= render 'shared/error_messages', object: f.object %>
 
 			<%= f.label :Title, "Title" %>
-			<%= f.text_field :title, class: "form-control" %>
+			<%= f.text_field :title, class: "form-control", placeholder: "Make it catchy!" %>
 
 			<%= f.label :URL, "URL" %>
-			<%= f.text_field :url, class: "form-control", placeholder: "http://~" %>
+			<%= f.text_field :url, class: "form-control", placeholder: "http://yourlinkhere.gov" %>
+
+			<%= f.label :Description, "Description" %>
+			<%= f.text_area :description, class: "form-control", placeholder: "Some stuff about your link." %>
 
 			<%= f.submit "Submit", class: "btn btn-primary" %>
 		<% end %>
