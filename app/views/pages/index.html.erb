@@ -16,6 +16,7 @@
 					</div>
 					<div class="col-md-6">
 						<p>Comments:</p>
+						<p><%= current_user.comments.count.to_s %></p>
 					</div>
 				</div>
 				<%= link_to 'Submit a link', new_link_path, class: "btn btn-primary center" %>

@@ -17,6 +17,10 @@ class LinksController < ApplicationController
 
   def show
     @link = Link.find(params[:id])
+    @comments = @link.comments
+    if current_user.present?
+      @comment = Comment.new(link_id: @link.id, user_id: current_user.id)
+    end
   end
 
   def destroy

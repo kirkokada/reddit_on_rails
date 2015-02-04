@@ -4,9 +4,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :links
-  resources :users, only: [:show, :index]
-  resources :votes, only: [:create, :update, :destroy]
+  resources :links,    only: [:new, :create, :destroy, :show]
+  resources :users,    only: [:show, :index]
+  resources :votes,    only: [:create, :update, :destroy]
+  resources :comments, only: [:create, :destroy, :edit, :update]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

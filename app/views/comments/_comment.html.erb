@@ -1,0 +1,15 @@
+<div id="comment-<%= comment.id %>" class="col-md-11 col-md-offset-1 comment">
+	<h5>
+		<%= link_to comment.user.name || "anonymous", comment.user %> 
+	</h5>
+	<p><%= comment.content %></p>
+	<div class="comment-actions">
+		<% if current_user.present? %>
+			<%= link_to 'reply', '#' %>
+		<% end %>
+		<% if comment.user == current_user %>
+			<%= link_to "edit", edit_comment_path(comment), remote: true %>
+			<%= link_to "delete", comment_path(comment), method: :delete, remote: true %>
+		<% end %>
+	</div>
+</div>

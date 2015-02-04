@@ -10,9 +10,9 @@
 			ago by <%= link_to link.user.name || "anonymous", link.user %>
 		</span>
 		<span class="link-actions">
-			<%= link_to "comment", link_path(link) %> 
+			<%= link_to pluralize(link.comments.count.to_s, "comment"), link_path(link) %> 
 			<% if link.user == current_user %>
-				<%= link_to "delete", link_path(link), method: :delete, remote: true %>
+				| <%= link_to "delete", link_path(link), method: :delete, remote: true %>
 			<% end %>
 		</div>
 	</span>

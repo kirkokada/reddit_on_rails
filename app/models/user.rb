@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :links
   has_many :votes
+  has_many :comments
 
   def front_page_links
   	Link.all

@@ -6,6 +6,9 @@ class Link < ActiveRecord::Base
 
 	belongs_to :user
 	has_many   :votes
+	has_many   :comments
+
+	default_scope { order 'created_at DESC' }
 
 	def score
 		votes.sum(:value)
