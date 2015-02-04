@@ -54,5 +54,6 @@ group :development, :test do
   gem 'guard-minitest'
   gem 'terminal-notifier-guard'
   gem 'minitest-reporters'
+  gem 'mini_backtrace'
 end
 
