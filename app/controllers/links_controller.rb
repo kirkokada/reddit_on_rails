@@ -17,9 +17,9 @@ class LinksController < ApplicationController
 
   def show
     @link = Link.find(params[:id])
-    @comments = @link.comments
+    @comments = @link.top_level_comments
     if current_user.present?
-      @comment = Comment.new(link_id: @link.id, user_id: current_user.id)
+      @comment = Comment.new(link: @link, user: current_user)
     end
   end
 

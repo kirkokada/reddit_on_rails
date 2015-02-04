@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-	before_action :authenticate_user!, only: [:create, :destroy, :edit, :update]
+	before_action :authenticate_user!
 
 	def create
 		@comment = Comment.new(comment_params)
@@ -38,6 +38,16 @@ class CommentsController < ApplicationController
 			end
 		else
 			render 'edit'
+		end
+	end
+
+	def reply
+		@parent = Comment.find(params[:id])
+		link = @parent.link
+		@comment = Comment.new(user: current_user, parent: @parent, link: link)
+		respond_to do |format|
+			format.html
+			format.js
 		end
 	end
 

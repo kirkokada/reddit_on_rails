@@ -8,10 +8,10 @@
 				</div>
 			<% end %>
 		</div>
-		<h3><%= pluralize(@link.comments.count, "comments") %></h3>
+		<h3><%= pluralize(@link.comments.size, "comments") %></h3>
 		<%= render 'comments/comment_form' %>
-		<div id="comment-area">
+		<ul id="comment-area">
 			<%= render @comments %>
-		</div>
+		</ul>
 	</div>
 </div>

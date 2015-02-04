@@ -1,2 +1,9 @@
-$("<%= escape_javascript(render(@comment)) %>").hide().prependTo('#comment-area')
+<% if @comment.child? %>
+	$("#comment-<%= @comment.parent.id %>-reply-form").empty();
+	$("<%= escape_javascript(render(@comment)) %>").hide()
+		.prependTo('#comment-<%= @comment.parent.id %>-children')
+		.fadeIn('slow');
+<% else %>
+	$("<%= escape_javascript(render(@comment)) %>").hide().prependTo('#comment-area')
 	.fadeIn('slow');
+<% end %>

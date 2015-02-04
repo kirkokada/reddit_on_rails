@@ -1,15 +1,20 @@
-<div id="comment-<%= comment.id %>" class="col-md-11 col-md-offset-1 comment">
+<li id="comment-<%= comment.id %>" 
+	  class="comment <%= comment.parents_count.even? ? 'even' : 'odd' %>">
 	<h5>
 		<%= link_to comment.user.name || "anonymous", comment.user %> 
 	</h5>
 	<p><%= comment.content %></p>
 	<div class="comment-actions">
 		<% if current_user.present? %>
-			<%= link_to 'reply', '#' %>
+			<%= link_to 'reply', reply_to_comment_path(comment), remote: true %>
 		<% end %>
 		<% if comment.user == current_user %>
 			<%= link_to "edit", edit_comment_path(comment), remote: true %>
 			<%= link_to "delete", comment_path(comment), method: :delete, remote: true %>
 		<% end %>
 	</div>
-</div>
+	<div id="comment-<%= comment.id %>-reply-form"></div>
+	<ul id="comment-<%= comment.id %>-children" class="children">
+		<%= render comment.children if comment.parent? %>
+	</ul>
+</li>

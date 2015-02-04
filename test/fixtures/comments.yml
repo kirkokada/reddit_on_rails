@@ -3,9 +3,10 @@
 hello:
   user: michael
   link: google
-  content: "Hello"
+  content: "Hello. Her?"
 
-two:
-  user_id: 1
-  link_id: 1
-  content: MyText
+reply:
+  user: gob
+  link: google
+  content: "I've made a terrible mistake."
+  parent: hello

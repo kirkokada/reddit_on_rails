@@ -7,7 +7,7 @@ class CommentingTest < ActionDispatch::IntegrationTest
  		sign_in @user
   end
 
-  test 'should create links the standard way' do
+  test 'should create comments the standard way' do
   	get link_path(@link)
   	content = "this link is pretty good"
   	assert_difference '@link.comments.count' do
@@ -20,7 +20,7 @@ class CommentingTest < ActionDispatch::IntegrationTest
   	assert_match content, response.body
   end
 
-  test 'should create links via AJAX' do
+  test 'should create comments via AJAX' do
   	get link_path(@link)
   	content = "this link is pretty good!"
   	assert_difference '@link.comments.count' do
@@ -31,7 +31,7 @@ class CommentingTest < ActionDispatch::IntegrationTest
   	assert_match content, response.body
   end
 
-  test 'should delete links the normal way' do
+  test 'should delete comments the normal way' do
   	comment = comments(:hello)
   	get link_path(@link)
   	assert_select "#comment-#{comment.id}"
@@ -51,5 +51,19 @@ class CommentingTest < ActionDispatch::IntegrationTest
 	  	xhr :delete, comment_path(comment)
 	  end
   	assert_select "#comment-#{comment.id}", count: 0
+  end
+
+  test 'replying to a comment with ajax' do
+    parent = comments(:hello)
+    get link_path(@link)
+    content = "This is my reply!"
+    assert_difference 'parent.children.count', 1 do
+      xhr :post, comments_path, comment: { user_id: @user.id,
+                                           link_id: @link.id,
+                                           content: content,
+                                           parent_id: parent.id,}
+    end
+    # Replies should appear only once
+    assert_match content, response.body
   end
 end

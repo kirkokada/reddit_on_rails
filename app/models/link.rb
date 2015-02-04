@@ -14,6 +14,10 @@ class Link < ActiveRecord::Base
 		votes.sum(:value)
 	end
 
+	def top_level_comments
+		comments.where(parent_id: nil)
+	end
+	
 	private
 		# Appends 'http://' to the url if not present
 		def append_http

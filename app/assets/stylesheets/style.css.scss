@@ -99,14 +99,25 @@ a {
 
 /* comments */
 
-.comment-area {
-	&:first-child {
-		margin-top: 10px
+#comment-area {
+	margin-top: 10px;
+	padding-left: 0;
+	.even {
+		background-color: $gray-lighter;
+	}
+	.odd {
+		background-color: #FFF;
 	}
 }
+
 .comment {
-	background-color: $gray-lighter;
 	border-radius: 5px;
 	margin: 3px 0px;
-	padding-bottom: 5px;
+	padding: 5px 10px;
+	list-style: none;
+}
+
+.children {
+	padding-left: 20px;
+	margin-top: 5px;
 }
