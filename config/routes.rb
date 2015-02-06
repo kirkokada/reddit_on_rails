@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users,    only: [:show, :index]
   resources :votes,    only: [:create, :update, :destroy]
   resources :comments, only: [:create, :destroy, :edit, :update]
+  resources :subreddits
 
   get 'comments/:id/reply' => 'comments#reply', as: :reply_to_comment
 

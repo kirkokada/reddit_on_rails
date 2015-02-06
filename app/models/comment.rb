@@ -11,6 +11,8 @@ class Comment < ActiveRecord::Base
 	validates :user_id, presence: true
 	validates :link_id, presence: true
 
+	delegate :name, to: :user, prefix: true
+
 	before_save :set_parents_count
 
 	def parent?

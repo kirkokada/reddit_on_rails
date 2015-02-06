@@ -3,7 +3,8 @@ require 'test_helper'
 class LinkTest < ActiveSupport::TestCase
 	def setup
 		@user = users(:michael)
-		@link = @user.links.build(title:"TBA", url:"http://url.com")
+    @subreddit = subreddits(:stuff)
+		@link = @user.links.build(title:"TBA", url:"http://url.com", subreddit: @subreddit)
 	end
 
   test "link url should be formatted properly" do
@@ -29,5 +30,12 @@ class LinkTest < ActiveSupport::TestCase
   	assert_no_difference 'Link.count' do
   		@link.save	
   	end
+  end
+
+  test 'subreddit_id should be present' do
+    @link.subreddit_id = nil
+    assert_no_difference 'Link.count' do
+      @link.save
+    end
   end
 end

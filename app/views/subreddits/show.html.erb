@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-md-8">
+		<h2><%= @subreddit.name %></h2>
+		<% if @links.any? %>
+			<%= render @links %>
+			<%= will_paginate @links %>
+		<% end %>
+	</div>
+	<aside class="col-md-4">
+		<p><%= @subreddit.description %></p>
+		<%= link_to 'Submit a link', new_link_path(subreddit: @subreddit.name),
+		                             class: 'btn btn-primary' %>
+		<div>
+			<small>created by <%= link_to @subreddit.user_name || 'anonymous', @subreddit.user %></small>
+		</div>
+	</aside>
+</div>

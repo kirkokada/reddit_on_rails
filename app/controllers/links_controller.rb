@@ -2,11 +2,12 @@ class LinksController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :create, :destroy]
 
 	def new
-		@link = current_user.links.build
+		@link = current_user.links.build()
 	end
 
   def create
   	@link = current_user.links.build(link_params)
+    @link.subreddit = Subreddit.find_by(name: params[:subreddit])
   	if @link.save
   		flash[:success] = "Link submitted!"
   		redirect_to @link

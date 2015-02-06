@@ -1,7 +1,6 @@
-<li id="comment-<%= comment.id %>" 
-	  class="comment <%= comment.parents_count.even? ? 'even' : 'odd' %>">
+<li id="comment-<%= comment.id %>" class="comment">
 	<h5>
-		<%= link_to comment.user.name || "anonymous", comment.user %> 
+		<%= link_to comment.user_name || "anonymous", comment.user %> 
 	</h5>
 	<p><%= comment.content %></p>
 	<div class="comment-actions">
@@ -15,6 +14,6 @@
 	</div>
 	<div id="comment-<%= comment.id %>-reply-form"></div>
 	<ul id="comment-<%= comment.id %>-children" class="children">
-		<%= render comment.children if comment.parent? %>
+		<%= render comment.children if comment.children.any? %>
 	</ul>
 </li>

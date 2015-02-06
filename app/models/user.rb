@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :links
   has_many :votes
   has_many :comments
+  has_many :subreddits
 
   def front_page_links
   	Link.all

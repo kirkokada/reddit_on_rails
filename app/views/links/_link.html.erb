@@ -6,8 +6,10 @@
 	<% end %>
 	<div class="link-info col-md-11">
 		<span class="link-title"><%= link_to link.title, link.url %></span>
-		<span class="link-timestamp">Submitted <%= time_ago_in_words(link.created_at) %> 
+		<span class="link-timestamp">
+			Submitted <%= time_ago_in_words(link.created_at) %> 
 			ago by <%= link_to link.user.name || "anonymous", link.user %>
+			to <%= link_to link.subreddit.name, subreddit_path(link.subreddit) %>
 		</span>
 		<span class="link-actions">
 			<%= link_to pluralize(link.comments.size.to_s, "comment"), link_path(link) %> 
