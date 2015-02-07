@@ -1,6 +1,8 @@
 class Subreddit < ActiveRecord::Base
 	belongs_to :user
 	has_many :links
+	has_many :subscriptions, dependent: :destroy
+	has_many :subscribers, through: :subscriptions
 
 	VALID_NAME_REGEX = /\A[\w]+\z/ 
 	validates :name, presence: true, 

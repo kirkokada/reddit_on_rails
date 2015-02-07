@@ -29,4 +29,9 @@ class CommentsControllerTest < ActionController::TestCase
     assert_redirected_to new_user_session_path
     assert_equal comment.content, comment.reload.content
   end
+
+  test 'reply should redirect non-signed in user' do
+    get :reply, id: 1
+    assert_redirected_to new_user_session_path
+  end
 end

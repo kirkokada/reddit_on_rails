@@ -55,15 +55,16 @@ class CommentingTest < ActionDispatch::IntegrationTest
 
   test 'replying to a comment with ajax' do
     parent = comments(:hello)
-    get link_path(@link)
+    xhr :get, reply_to_comment_path(parent)
+    @reply = assigns(:comment)
     content = "This is my reply!"
     assert_difference 'parent.children.count', 1 do
-      xhr :post, comments_path, comment: { user_id: @user.id,
-                                           link_id: @link.id,
+      xhr :post, comments_path, comment: { user_id: @reply.user.id,
+                                           link_id: @reply.link.id,
                                            content: content,
-                                           parent_id: parent.id,}
+                                           parent_id: @reply.parent.id,}
     end
     # Replies should appear only once
-    assert_match content, response.body
+    assert_match content, response.body, count: 1
   end
 end

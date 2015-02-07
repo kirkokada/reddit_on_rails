@@ -2,11 +2,14 @@ class CommentsController < ApplicationController
 	before_action :authenticate_user!
 
 	def create
-		@comment = Comment.new(comment_params)
-		@comment.save
-		respond_to do |format|
-			format.html { redirect_to @comment.link }
-			format.js 
+		@comment = current_user.comments.build(comment_params)
+		if @comment.save
+			respond_to do |format|
+				format.html { redirect_to @comment.link }
+				format.js 
+			end
+		else
+			redirect_to root_url, flash[:danger] = "Something went wrong!"
 		end
 	end
 
@@ -44,7 +47,7 @@ class CommentsController < ApplicationController
 	def reply
 		@parent = Comment.find(params[:id])
 		link = @parent.link
-		@comment = Comment.new(user: current_user, parent: @parent, link: link)
+		@comment = current_user.comments.build(parent_id: @parent.id, link_id: link.id)
 		respond_to do |format|
 			format.html
 			format.js

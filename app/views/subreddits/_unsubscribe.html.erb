@@ -1,0 +1,5 @@
+<%= form_for(current_user.subscriptions.find_by(subreddit: @subreddit),
+						 remote: true,
+             html: { method: :delete }) do |f| %>
+  <%= f.submit "unsubscribe", class: "btn btn-danger" %>
+<% end %>

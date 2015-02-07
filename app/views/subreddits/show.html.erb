@@ -10,6 +10,9 @@
 		<p><%= @subreddit.description %></p>
 		<%= link_to 'Submit a link', new_link_path(subreddit: @subreddit.name),
 		                             class: 'btn btn-primary' %>
+	  <% if current_user %>
+	  	<%= render 'subscription_form' %>
+	  <% end %>
 		<div>
 			<small>created by <%= link_to @subreddit.user_name || 'anonymous', @subreddit.user %></small>
 		</div>

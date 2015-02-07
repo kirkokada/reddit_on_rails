@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'pages#index'
 
   devise_for :users
@@ -9,6 +8,7 @@ Rails.application.routes.draw do
   resources :votes,    only: [:create, :update, :destroy]
   resources :comments, only: [:create, :destroy, :edit, :update]
   resources :subreddits
+  resources :subscriptions, only: [:create, :destroy]
 
   get 'comments/:id/reply' => 'comments#reply', as: :reply_to_comment
 

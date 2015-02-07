@@ -3,8 +3,8 @@ class VotesController < ApplicationController
 	
 	def create
 		@link = Link.find(params[:link_id])
-		value = params[:value]
-		current_user.vote(@link, value)
+		direction = params[:direction]
+		current_user.vote(@link, direction)
 		respond_to do |format|
 			format.html { redirect_to @link }
 			format.js
@@ -13,8 +13,8 @@ class VotesController < ApplicationController
 
 	def update
 		@link = Vote.find(params[:id]).link
-		value = params[:value]
-		current_user.vote(@link, value)
+		direction = params[:direction]
+		current_user.vote(@link, direction)
 		respond_to do |format|
 			format.html { redirect_to @link }
 			format.js   { render 'create' }
