@@ -1,3 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+one:
+  user: michael
+  subreddit: sitwell
 
+two:
+  user: michael
+  subreddit: bluth
+
+three:
+  user: gob
+  subreddit: banana_stand
+
+four:
+  user: stan
+  subreddit: bluth

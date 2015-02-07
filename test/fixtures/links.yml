@@ -14,10 +14,35 @@ tbd:
   description: "Like the guy in the $3000 suit is going to donate!"
   subreddit: stuff
 
-<% 35.times do |n| %>
+<% 30.times do |n| %>
 link-<%= n %>:
   url: <%= "http://#{n}.com" %>
   title: <%= "Website Number #{n}" %>
   user: michael
   subreddit: stuff
 <% end %>
+
+<% 30.times do |n| %>
+link-<%= n %>:
+  url: <%= "http://#{n}.com" %>
+  title: <%= "Website Number #{n}" %>
+  user: gob
+  subreddit: bluth
+<% end %>
+
+<% 30.times do |n| %>
+link-<%= n %>:
+  url: <%= "http://#{n}.com" %>
+  title: <%= "Website Number #{n}" %>
+  user: stan
+  subreddit: sitwell
+<% end %>
+
+<% 30.times do |n| %>
+link-<%= n %>:
+  url: <%= "http://#{n}.com" %>
+  title: <%= "Website Number #{n}" %>
+  user: gob
+  subreddit: banana_stand
+<% end %>
+

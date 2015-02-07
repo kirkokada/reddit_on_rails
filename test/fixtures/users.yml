@@ -9,3 +9,8 @@ gob:
   name: "gob"
   email: "thefinalcountdown@bluth.com"
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+
+stan:
+  name: "stan_sitwell"
+  email: "stan@sitwell.com"
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>

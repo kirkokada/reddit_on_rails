@@ -4,3 +4,18 @@ stuff:
   name: "stuff"
   description: "links and stuff"
   user: michael
+
+bluth:
+  name: "bluth"
+  description: "bluth matters"
+  user: michael
+
+sitwell:
+  name: "sitwell"
+  description: "better than bluth"
+  user: stan
+
+banana_stand:
+  name: "banana_stand"
+  description: "There's money in the banana stand"
+  user: gob

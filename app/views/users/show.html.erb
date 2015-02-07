@@ -4,6 +4,7 @@
 		<h2>Submitted Links</h2>
 		<ul class="links">
 			<%= render @links %>
+			<%= will_paginate @links, renderer: BootstrapPagination::Rails %>
 		</ul>
 	</div>
 </div>

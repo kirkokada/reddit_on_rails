@@ -56,6 +56,9 @@ group :development, :test do
   gem 'terminal-notifier-guard'
   gem 'minitest-reporters'
   gem 'mini_backtrace'
+
+  #sample data
+  gem 'faker'
 end
 
 group :production do

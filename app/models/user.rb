@@ -11,7 +11,9 @@ class User < ActiveRecord::Base
   has_many :subscribed_subreddits, through: :subscriptions, source: :subreddit
 
   def front_page_links
-  	Link.all
+    subreddit_ids = "SELECT subreddit_id FROM subscriptions 
+                     WHERE user_id = :user_id"
+    Link.where("subreddit_id IN (#{subreddit_ids})", user_id: id)
   end
 
   # Returns false if vote exists

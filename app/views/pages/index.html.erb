@@ -5,7 +5,7 @@
 				<div class="links">
 					<%= render @links %>
 				</div>
-				<%= will_paginate @links %>
+				<%= will_paginate @links, renderer: BootstrapPagination::Rails %>
 			</div>
 			<aside class="col-md-3">
 				<h2><%= current_user.name || current_user.email %></h2>
