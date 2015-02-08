@@ -9,23 +9,16 @@
 			</div>
 			<aside class="col-md-3">
 				<h2><%= current_user.name || current_user.email %></h2>
-				<div class="stats row" id="user-stats">
-					<div class="col-md-6">
-						<p>Links:</p> 
-						<p><%= current_user.links.count.to_s %></p>
-					</div>
-					<div class="col-md-6">
-						<p>Comments:</p>
-						<p><%= current_user.comments.count.to_s %></p>
-					</div>
-				</div>
+				<%= render 'shared/user_stats', user: current_user %>
 				<%= link_to 'Submit a link', new_link_path, class: "btn btn-primary center" %>
 				<%= link_to 'Create a subreddit', new_subreddit_path, class: "btn btn-primary center" %>
 			</aside>
 		<% else %>
 			<div class="jumbotron center">
 				<h1>Reddit on Rails!</h1>
-				<h2><%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-primary" %><h2>
+				<h2 class="center-block">
+					<%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-primary" %>
+				</h2>
 			</div>
 		<% end %>
 </div>

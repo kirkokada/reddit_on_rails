@@ -4,10 +4,14 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :links,    only: [:new, :create, :destroy, :show]
-  resources :users,    only: [:show, :index]
+
+  resources :users, only: [:show, :index] do
+    resources :comments, only: [:index]
+    resources :links,    only: [:index]
+  end
   resources :votes,    only: [:create, :update, :destroy]
   resources :comments, only: [:create, :destroy, :edit, :update]
-  resources :subreddits
+  resources :subreddits, path: 'r'
   resources :subscriptions, only: [:create, :destroy]
 
   get 'comments/:id/reply' => 'comments#reply', as: :reply_to_comment

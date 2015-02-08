@@ -11,7 +11,7 @@
 		<h3><%= pluralize(@link.comments.size, "comments") %></h3>
 		<%= render 'comments/comment_form' %>
 		<ul id="comment-area">
-			<%= render @comments %>
+			<%= render @comments, show_children: true %>
 		</ul>
 	</div>
 </div>

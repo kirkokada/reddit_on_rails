@@ -1,0 +1,12 @@
+<ul class="nav nav-tabs">
+  <li role="presentation" <%= "class=active" if params[:controller] == 'users' %> 
+  	                      id="overview_tab">
+  	<%= link_to 'Overview', user_path(@user), remote: true %>
+  </li>
+  <li role="presentation" <%= "class=active" if params[:controller] == 'links' %> id="links_tab">
+  	<%= link_to 'Submitted', user_links_path(@user), remote: true %>
+  </li>
+  <li role="presentation" <%= "class=active" if params[:controller] == 'comments' %> id="comments_tab">
+  	<%= link_to 'Comments', user_comments_path(@user), remote: true %>
+  </li>
+</ul>

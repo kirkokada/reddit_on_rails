@@ -1,10 +1,12 @@
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
-		<h1>Overview for <%= @user.name || "anonymous" %></h1>
-		<h2>Submitted Links</h2>
-		<ul class="links">
-			<%= render @links %>
-			<%= will_paginate @links, renderer: BootstrapPagination::Rails %>
-		</ul>
+	<div class="col-md-8">
+		<%= render 'users/nav_tabs' %>
+		<div id="user_info">
+			<%= render @content %>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<h2><%= @user.name %></h2>
+		<%= render 'shared/user_stats', user: @user %>
 	</div>
 </div>

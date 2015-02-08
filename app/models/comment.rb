@@ -13,16 +13,11 @@ class Comment < ActiveRecord::Base
 
 	delegate :name, to: :user, prefix: true
 
+	delegate :title, to: :link, prefix: true
+
 	before_save :set_parents_count
 
-	def parent?
-		return true if children.present?
-	end
-
-	def child?
-		return true if parent.present?
-	end
-	
+	default_scope { order 'created_at DESC' }
 	private
 
 		def set_parents_count

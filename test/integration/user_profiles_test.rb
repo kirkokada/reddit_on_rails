@@ -19,4 +19,18 @@ class UserProfilesTest < ActionDispatch::IntegrationTest
 			assert_select 'a[href=?]', link_path(link), text: 'delete', count: 0
 		end
 	end
+
+	test 'should show user comments' do
+		get user_comments_path(@user)
+		@user.comments.paginate(page: 1).each do |comment|
+			assert_select "#comment-#{comment.id}"
+		end
+	end
+
+	test 'should show user links' do
+		get user_links_path(@user)
+		@user.links.paginate(page: 1).each do |link|
+			assert_select "#link-#{link.id}"
+		end
+	end
 end

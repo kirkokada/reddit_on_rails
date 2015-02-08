@@ -48,4 +48,11 @@ class User < ActiveRecord::Base
   def subscribed?(subreddit)
     subscribed_subreddits.include?(subreddit)
   end
+
+  # Returns an array of links and comments
+
+  def activity
+    objects = links.take(15) + comments.take(15)
+    objects = objects.sort_by(&:created_at).reverse
+  end
 end

@@ -1,4 +1,4 @@
-<% if @comment.child? %>
+<% unless @comment.parent.nil? %>
 	$("#comment-<%= @comment.parent.id %>-reply-form").empty();
 	$("<%= escape_javascript(render(@comment)) %>").hide()
 		.prependTo('#comment-<%= @comment.parent.id %>-children')

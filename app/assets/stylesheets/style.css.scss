@@ -115,6 +115,11 @@ a {
 	margin: 3px 0px;
 	padding: 5px 10px;
 	list-style: none;
+	.timestamp {
+		font-size: 0.75em;
+		font-style: italic;
+		color: $gray-light
+	}
 }
 
 .children {

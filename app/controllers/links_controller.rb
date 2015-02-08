@@ -1,6 +1,18 @@
 class LinksController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :create, :destroy]
 
+  def index
+    @user = User.find(params[:user_id])
+    @links = @user.links.paginate(page: params[:page])
+    respond_to do |format|
+      format.html do
+        @content = 'users/links'
+        render 'users/show'
+      end
+      format.js
+    end
+  end
+
 	def new
 		@link = current_user.links.build()
 	end

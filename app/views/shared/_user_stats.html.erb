@@ -1,0 +1,10 @@
+<div class="stats row" id="user-stats">
+	<div class="col-md-6">
+		<p><%= link_to "Links", user_links_path(user) %></p> 
+		<p><%= user.links.count.to_s %></p>
+	</div>
+	<div class="col-md-6">
+		<p><%= link_to "Comments", user_comments_path(user) %></p>
+		<p><%= user.comments.count.to_s %></p>
+	</div>
+</div>

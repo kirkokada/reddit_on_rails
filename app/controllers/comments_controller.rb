@@ -1,5 +1,17 @@
 class CommentsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: [:index]
+
+	def index
+		@user = User.find(params[:user_id])
+		@comments = @user.comments.paginate(page: params[:page])
+		respond_to do |format|
+			format.html do
+				@content = 'users/comments'
+				render 'users/show'
+			end
+			format.js
+		end
+	end
 
 	def create
 		@comment = current_user.comments.build(comment_params)
