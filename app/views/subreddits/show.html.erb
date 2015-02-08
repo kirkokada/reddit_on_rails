@@ -14,7 +14,7 @@
 	  	<%= render 'subscription_form' %>
 	  <% end %>
 		<div>
-			<small>created by <%= link_to @subreddit.user_name || 'anonymous', @subreddit.user %></small>
+			<small>created by <%= link_to @subreddit.username, @subreddit.user %></small>
 		</div>
 	</aside>
 </div>

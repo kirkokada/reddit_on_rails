@@ -14,7 +14,7 @@ class ActiveSupport::TestCase
   # Signs in a user
 
   def sign_in(user)
-  	post user_session_path(user: { email: user.email, password: 'password' })
+  	post user_session_path(user: { username: user.username, password: 'password' })
   end
 
   def sign_out

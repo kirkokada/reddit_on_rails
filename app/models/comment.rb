@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
 	validates :user_id, presence: true
 	validates :link_id, presence: true
 
-	delegate :name, to: :user, prefix: true
+	delegate :username, to: :user, prefix: false
 
 	delegate :title, to: :link, prefix: true
 

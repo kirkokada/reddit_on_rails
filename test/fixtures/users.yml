@@ -1,16 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 michael:
-  name: "m_bluth"
+  username: "m_bluth"
   email: "michael@bluth.com"
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 
 gob:
-  name: "gob"
+  username: "gob"
   email: "thefinalcountdown@bluth.com"
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 
 stan:
-  name: "stan_sitwell"
+  username: "stan_sitwell"
   email: "stan@sitwell.com"
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>

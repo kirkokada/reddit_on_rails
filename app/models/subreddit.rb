@@ -12,7 +12,7 @@ class Subreddit < ActiveRecord::Base
 
 	before_save :downcase_name
 
-	delegate :name, to: :user, prefix: true
+	delegate :username, to: :user, prefix: false
 
 	def to_param
 		name

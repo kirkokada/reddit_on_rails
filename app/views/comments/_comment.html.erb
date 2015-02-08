@@ -3,7 +3,7 @@
 		<h4><%= link_to comment.link_title, comment.link %></h5>
 	<% end %>
 	<h5>
-		<%= link_to comment.user_name || "anonymous", comment.user %> 
+		<%= link_to comment.username, comment.user %> 
 		<span class="timestamp">
 			<%= time_ago_in_words(comment.created_at) %> ago
 		</span>

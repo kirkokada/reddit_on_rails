@@ -1,16 +1,16 @@
 # Users
 puts("-- Populating Users...")
 
-User.create!(name:  "Example User",
+User.create!(username:  "example_user",
              email: "example@user.com",
              password:              "password",
              password_confirmation: "password")
 
 30.times do |n|
-  name  = Faker::Internet.user_name
+  username  = ('a'..'z').to_a.shuffle[0,8].join
   email = "example-#{n+1}@redditonrails.com"
   password = "password"
-  User.create!(name:  name,
+  User.create!(username: username,
                email: email,
                password:              password,
                password_confirmation: password)

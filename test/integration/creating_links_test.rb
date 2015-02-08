@@ -21,7 +21,7 @@ class CreatingLinksTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_match CGI.escapeHTML(@link.url), response.body
     assert_match @link.title, response.body
-    assert_match @user.name, response.body
+    assert_match @user.username, response.body
     assert_select 'a[href=?]', subreddit_path(@subreddit)
     get subreddit_path(@subreddit)
     assert_select 'a[href=?]', @link.url, text: @link.title
