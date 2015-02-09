@@ -3,11 +3,11 @@ class VotesController < ApplicationController
 	
 	def create
 		@link = Link.find(params[:link_id])
-		direction = params[:direction]
-		current_user.vote(@link, direction)
+		@direction = params[:direction]
+		current_user.vote(@link, @direction)
 		respond_to do |format|
 			format.html { redirect_to @link }
-			format.js
+			format.js   { @link.reload }
 		end 
 	end
 
@@ -17,7 +17,10 @@ class VotesController < ApplicationController
 		current_user.vote(@link, direction)
 		respond_to do |format|
 			format.html { redirect_to @link }
-			format.js   { render 'create' }
+			format.js   do
+				@link.reload
+				render 'create'
+			end
 		end
 	end
 end

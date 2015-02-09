@@ -2,7 +2,9 @@ require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
 	def setup
-	 	@vote = Vote.new(link_id: 1, user_id: 1, value: 0)
+		@user = users(:michael)
+		@link = links(:tbd)
+	 	@vote = Vote.new(link_id: @link.id, user_id: @user.id, value: 0)
 	end 
 
 	test 'should be valid' do
@@ -29,5 +31,24 @@ class VoteTest < ActiveSupport::TestCase
 		assert_not @vote.valid?
 		@vote.value = 2
 		assert_not @vote.valid?
+	end
+
+	test 'up should set value to 1' do
+		assert_difference '@vote.value', 1 do
+			@vote.up
+		end
+	end
+
+	test 'down should set value to -1' do
+		assert_difference '@vote.value', -1 do
+			@vote.down
+		end
+	end
+
+	test 'neutral should set value to 0' do
+		@vote.value = 1
+		@vote.save
+		@vote.neutral
+		assert_equal 0, @vote.reload.value
 	end
 end

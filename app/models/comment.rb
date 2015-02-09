@@ -15,9 +15,14 @@ class Comment < ActiveRecord::Base
 
 	delegate :title, to: :link, prefix: true
 
+	delegate :subreddit, to: :link
+
+	delegate :name, to: :subreddit, prefix: true
+
 	before_save :set_parents_count
 
 	default_scope { order 'created_at DESC' }
+	
 	private
 
 		def set_parents_count

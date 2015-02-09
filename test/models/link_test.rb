@@ -38,4 +38,13 @@ class LinkTest < ActiveSupport::TestCase
       @link.save
     end
   end
+
+  test 'update_score should update score' do
+    link = links(:tbd)
+    link.update_attribute(:score, 1)
+    assert_equal 1, link.score
+    assert_equal 0, link.votes.size
+    link.update_score
+    assert_equal 0, link.score
+  end
 end

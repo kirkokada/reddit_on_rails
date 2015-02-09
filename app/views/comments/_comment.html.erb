@@ -1,11 +1,12 @@
 <li id="comment-<%= comment.id %>" class="comment">
 	<% unless params[:controller] == 'index' %>
-		<h4><%= link_to comment.link_title, comment.link %></h5>
+		<h4><%= link_to comment.link_title, comment.link %></h4>
 	<% end %>
 	<h5>
 		<%= link_to comment.username, comment.user %> 
 		<span class="timestamp">
 			<%= time_ago_in_words(comment.created_at) %> ago
+			in <%= link_to "/r/#{comment.subreddit_name}" %>
 		</span>
 	</h5>
 	<p><%= comment.content %></p>

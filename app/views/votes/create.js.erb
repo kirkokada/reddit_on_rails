@@ -1,1 +1,2 @@
 $('#vote_form-<%= @link.id %>').html("<%= escape_javascript(render('links/vote_form', link: @link)) %>")
+$('#vote_form-<%= @link.id %> .score').html("<%= escape_javascript(@link.score.to_s) %>")

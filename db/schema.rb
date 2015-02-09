@@ -11,17 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208060547) do
+ActiveRecord::Schema.define(version: 20150208214137) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "link_id"
     t.text     "content"
     t.integer  "parent_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "parents_count",  default: 0
-    t.integer  "children_count", default: 0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "parents_count",    default: 0
+    t.integer  "children_count",   default: 0
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
   end
 
   add_index "comments", ["link_id"], name: "index_comments_on_link_id"
@@ -31,10 +33,11 @@ ActiveRecord::Schema.define(version: 20150208060547) do
     t.integer  "user_id"
     t.string   "url"
     t.string   "title"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.text     "description"
     t.integer  "subreddit_id"
+    t.integer  "score",        default: 0
   end
 
   create_table "subreddits", force: :cascade do |t|

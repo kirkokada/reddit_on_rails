@@ -35,6 +35,24 @@ class User < ActiveRecord::Base
   	!self.votes.find_by(link: link).nil?
   end
 
+  def voted_up?(link)
+    if voted?(link)
+      value = votes.find_by(link: link).value
+      value == 1 ? true : false
+    else
+      return false
+    end
+  end
+
+  def voted_down?(link)
+    if voted?(link)
+      value = votes.find_by(link: link).value
+      value == -1 ? true : false
+    else
+      return false
+    end
+  end
+
   # Creates vote in with the specified value or updates an existing vote
   def vote(link, direction)
   	if vote = self.votes.find_by(link: link)

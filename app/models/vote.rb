@@ -10,6 +10,9 @@ class Vote < ActiveRecord::Base
 	                                  less_than_or_equal_to:    1,
 	                                  only_integer: true },
 	                  presence: true
+
+	after_save :update_link_score
+
 	def up
 		self.update_attribute(:value, 1)
 	end
@@ -21,4 +24,10 @@ class Vote < ActiveRecord::Base
 	def neutral
 		self.update_attribute(:value, 0)
 	end
+
+	private
+
+		def update_link_score
+			self.link.update_score
+		end
 end
