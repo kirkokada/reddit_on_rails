@@ -1,4 +1,4 @@
-$('#user_info').html("<%= escape_javascript(render('users/links')) %>");
+$('#user_info').html("<%= escape_javascript(render(@content)) %>");
 $('#overview_tab').removeClass('active');
 $('#comments_tab').removeClass('active');
 $('#links_tab').addClass('active');

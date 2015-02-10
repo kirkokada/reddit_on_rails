@@ -12,8 +12,6 @@ class Link < ActiveRecord::Base
 	has_many   :votes
 	has_many   :comments
 
-	default_scope { order 'created_at DESC' }
-
 	def update_score
 		update_attribute(:score, self.votes.sum(:value))
 	end

@@ -1,12 +1,22 @@
 <ul class="nav nav-tabs">
   <li role="presentation" <%= "class=active" if params[:controller] == 'users' %> 
   	                      id="overview_tab">
-  	<%= link_to 'Overview', user_path(@user), remote: true %>
+  	<%= link_to 'Overview', user_path(@user) %>
   </li>
-  <li role="presentation" <%= "class=active" if params[:controller] == 'links' %> id="links_tab">
-  	<%= link_to 'Submitted', user_links_path(@user), remote: true %>
+  <li role="presentation dropdown" <%= "class=active" if params[:controller] == 'links' %> id="links_tab">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      Links<b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to 'New', user_links_path(@user, sort: :created_at, direction: :desc) %>
+      </li>
+      <li>
+        <%= link_to 'Top', user_links_path(@user, sort: 'score', direction: 'desc') %>
+      </li>
+    </ul>
   </li>
   <li role="presentation" <%= "class=active" if params[:controller] == 'comments' %> id="comments_tab">
-  	<%= link_to 'Comments', user_comments_path(@user), remote: true %>
+  	<%= link_to 'Comments', user_comments_path(@user) %>
   </li>
 </ul>

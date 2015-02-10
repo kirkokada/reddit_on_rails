@@ -33,4 +33,22 @@ class UserProfilesTest < ActionDispatch::IntegrationTest
 			assert_select "#link-#{link.id}"
 		end
 	end
+
+	test 'should sort user links by created_at' do
+		@user = users(:no_links)
+		3.times do |n|
+			Link.create(user_id: @user.id,
+				          title: "link #{n}", 
+				          url: "#{n}.com",
+				          description: "link #{n}", 
+				          score: n)
+		end
+		get user_links_path(@user), order: :created_at
+		links = assigns(:content)
+		assert_equal @user.links.first, links.first
+		get user_links_path(@user), order: :score
+		links = assigns(:content)
+		assert_equal @user.links.first, links.last
+		get user_links_path 
+	end
 end

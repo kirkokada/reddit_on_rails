@@ -3,10 +3,9 @@ class LinksController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @links = @user.links.paginate(page: params[:page])
+    @content = @user.links.order(sort_column + ' ' + sort_direction).paginate(page: params[:page])
     respond_to do |format|
       format.html do
-        @content = 'users/links'
         render 'users/show'
       end
       format.js
@@ -55,5 +54,13 @@ class LinksController < ApplicationController
   private
   def link_params
   	params.require(:link).permit(:title, :url, :description)
+  end
+
+  def sort_column
+    Link.column_names.include?(params[:sort]) ? params[:sort] : 'created_at'
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
   end
 end
